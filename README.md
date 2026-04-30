@@ -4,7 +4,7 @@ Este repositorio centraliza el desarrollo del sistema de monitoreo ambiental. Aq
 
 ## Equipo de Nube y Roles
 
-*   **Juan David (Líder de Proyecto):** Gestión de este repositorio, integración de servicios y comunicación entre líderes de área (Santiago y Rafael).
+*   **Juan David (Líder):** Gestión de este repositorio, integración de servicios y comunicación entre líderes de área (Santiago y Rafael).
 *   **Luis:** Administrador Cloud. Responsable de la creación del proyecto en Supabase e invitación de miembros.
 *   **Karen:** Diseñadora de Datos. Encargada de estructurar las tablas según los requerimientos técnicos.
 *   **Juan José:** Tester (QA). Encargado de validar la llegada de datos a la nube mediante Postman.
