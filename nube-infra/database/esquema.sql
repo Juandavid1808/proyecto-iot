@@ -1,0 +1,1 @@
+-- Prueba de conexión inicial del sistema de monitoreo
