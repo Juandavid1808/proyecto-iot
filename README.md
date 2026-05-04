@@ -16,9 +16,9 @@ Para mantener el orden entre los líderes de área, cada uno debe usar su carpet
 *   `📁 /iot-sensor`: Código del ESP32 y sensores (Líder: Santiago).
 *   `📁 /plataforma-web`: Código del Dashboard/Frontend (Líder: Rafael).
 *   `📁 /nube-infra`: 
-    *   `/database`: Esquemas de tablas de Karen.
-    *   `/pruebas`: Evidencias de éxito de Juan José.
-    *   `/arquitectura`: Diagramas de Andrey.
+    *   `/database`: Esquemas de tablas
+    *   `/pruebas`: Evidencias validacion
+    *   `/arquitectura`: Diagramas
 
 ## 🛠️ Especificaciones Técnicas
 *   **Base de Datos:** Supabase (PostgreSQL).
