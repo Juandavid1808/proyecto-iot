@@ -5,5 +5,5 @@ from django.http import HttpResponse
 urlpatterns = [
     path('', lambda request: HttpResponse("Servidor funcionando")),
     path('admin/', admin.site.urls),
-    path('api/', include('tu_app.urls')),
+    path('api/', include('AulaSmart.urls')),
 ]
