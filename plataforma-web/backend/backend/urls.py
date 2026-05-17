@@ -1,12 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
 
 urlpatterns = [
-
-    # Panel administrador Django
+    path('', lambda request: HttpResponse("Servidor funcionando")),
     path('admin/', admin.site.urls),
-
-    # Rutas de AulaSmart
     path('api/', include('AulaSmart.urls')),
-
 ]

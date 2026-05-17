@@ -1,0 +1,73 @@
+/*
+ * ============================================================
+ *  SISTEMA DOMÓTICO ARDUINO UNO
+ *  Sensores: DHT22 (Temp/Hum), Ruido, Luz (LDR)
+ *  Librería: DHT22.h
+ * ============================================================
+ */
+
+#include <DHT22.h>
+
+// --- PINES ---
+#define PIN_DHT      4
+#define PIN_LDR      A0
+#define PIN_SOUND    2
+
+// --- UMBRALES ---
+#define UMBRAL_LDR       400
+#define UMBRAL_TEMP_MAX  30.0
+#define UMBRAL_TEMP_MIN  15.0
+#define UMBRAL_HUM_MAX   80.0
+
+// --- OBJETOS ---
+DHT22 dht22(PIN_DHT);
+
+// --- VARIABLES ---
+float temperatura = 0;
+float humedad     = 0;
+int   luzValor    = 0;
+bool  sonido      = false;
+
+unsigned long ultimoSensor = 0;
+
+// ============================================================
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(PIN_SOUND, INPUT);
+  Serial.println(F("Sistema iniciado."));
+}
+
+// ============================================================
+
+void leerSensores() {
+  float t = dht22.getTemperature();
+  float h = dht22.getHumidity();
+
+  if (t != 0) temperatura = t;
+  if (h != 0) humedad     = h;
+
+  luzValor = analogRead(PIN_LDR);
+  sonido   = (digitalRead(PIN_SOUND) == HIGH);
+
+  // --- MONITOR SERIAL ---
+  Serial.println(F("========== VARIABLES =========="));
+  Serial.print(F("  temperatura = ")); Serial.print(temperatura, 1); Serial.println(F(" C"));
+  Serial.print(F("  humedad     = ")); Serial.print(humedad, 1);     Serial.println(F(" %"));
+  Serial.print(F("  luzValor    = ")); Serial.println(luzValor);
+  Serial.print(F("  sonido      = ")); Serial.println(sonido ? "true (DETECTADO)" : "false (Sin ruido)");
+  Serial.println(F("================================"));
+  Serial.println();
+}
+
+// ============================================================
+
+void loop() {
+  unsigned long ahora = millis();
+
+  // Sensores cada 2 seg
+  if (ahora - ultimoSensor >= 2000) {
+    leerSensores();
+    ultimoSensor = ahora;
+  }
+}
