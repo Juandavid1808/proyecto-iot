@@ -1,0 +1,37 @@
+.navbar {
+  height: 70px;
+  background: rgba(18, 18, 30, 0.75);
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 2rem;
+
+  color: white;
+}
+
+.navbar-left h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.navbar-user {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+}

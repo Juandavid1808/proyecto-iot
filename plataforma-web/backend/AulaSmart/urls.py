@@ -31,4 +31,11 @@ urlpatterns = [
         name='dispositivos'
     ),
 
+    # Historial
+    path(
+        'historial/',
+        views.HistorialView.as_view(),
+        name='historial'
+    ),
+
 ]

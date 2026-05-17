@@ -1,0 +1,16 @@
+.alertas-page {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 30px;
+}
+
+.alerts-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(320px, 1fr));
+
+  gap: 24px;
+}

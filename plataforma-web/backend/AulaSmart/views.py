@@ -4,6 +4,9 @@ from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator
+from django.db.models import Avg
+from django.db.models import Max
+from django.db.models import Min
 
 from .models import DatoSensor, Alerta, Dispositivo
 
@@ -255,4 +258,112 @@ class DashboardView(View):
             "ok": True,
             "total": len(resultado),
             "dispositivos": resultado
+        })
+    
+class HistorialView(View):
+
+    def get(self, request):
+
+        datos = DatoSensor.objects.select_related(
+            'dispositivo'
+        ).all().order_by('-timestamp')
+
+        historial = [
+
+            {
+                "id": dato.id,
+
+                "sensor": dato.tipo_sensor,
+
+                "valor": dato.valor,
+
+                "unidad": dato.unidad,
+
+                "fecha": dato.timestamp.isoformat(),
+
+                "dispositivo": {
+                    "nombre": dato.dispositivo.nombre,
+                    "ubicacion": dato.dispositivo.ubicacion,
+                }
+
+            }
+
+            for dato in datos[:100]
+
+        ]
+
+        # =========================
+        # PROMEDIOS
+        # =========================
+
+        promedio_temperatura = datos.filter(
+            tipo_sensor='temperatura'
+        ).aggregate(
+            promedio=Avg('valor')
+        )
+
+        promedio_humedad = datos.filter(
+            tipo_sensor='humedad'
+        ).aggregate(
+            promedio=Avg('valor')
+        )
+
+        promedio_sonido = datos.filter(
+            tipo_sensor='sonido'
+        ).aggregate(
+            promedio=Avg('valor')
+        )
+
+        promedio_luz = datos.filter(
+            tipo_sensor='luz'
+        ).aggregate(
+            promedio=Avg('valor')
+        )
+
+        # =========================
+        # MÁXIMOS
+        # =========================
+
+        maximo = datos.aggregate(
+            maximo=Max('valor')
+        )
+
+        # =========================
+        # MÍNIMOS
+        # =========================
+
+        minimo = datos.aggregate(
+            minimo=Min('valor')
+        )
+
+        return JsonResponse({
+
+            "ok": True,
+
+            "historial": historial,
+
+            "estadisticas": {
+
+                "promedios": {
+
+                    "temperatura":
+                        promedio_temperatura['promedio'],
+
+                    "humedad":
+                        promedio_humedad['promedio'],
+
+                    "sonido":
+                        promedio_sonido['promedio'],
+
+                    "luz":
+                        promedio_luz['promedio'],
+                },
+
+                "maximo":
+                    maximo['maximo'],
+
+                "minimo":
+                    minimo['minimo'],
+            }
+
         })

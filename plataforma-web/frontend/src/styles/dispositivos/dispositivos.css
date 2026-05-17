@@ -1,0 +1,9 @@
+.dispositivos-container {
+  padding: 20px;
+}
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}

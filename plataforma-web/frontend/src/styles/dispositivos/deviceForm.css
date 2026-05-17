@@ -1,0 +1,13 @@
+.device-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.device-form input {
+  padding: 8px;
+}
+
+.device-form button {
+  padding: 8px;
+}

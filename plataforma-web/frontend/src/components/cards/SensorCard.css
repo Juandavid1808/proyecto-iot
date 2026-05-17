@@ -1,0 +1,115 @@
+.sensor-card {
+  position: relative;
+
+  background:
+    rgba(255,255,255,0.06);
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  border-radius: 22px;
+
+  padding: 24px;
+
+  backdrop-filter: blur(10px);
+
+  overflow: hidden;
+
+  transition: 0.3s ease;
+
+  box-shadow:
+    0 0 20px rgba(0,0,0,0.15);
+}
+
+.sensor-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 0 30px rgba(59,130,246,0.18);
+}
+
+/* HEADER */
+
+.sensor-card-header {
+  margin-bottom: 18px;
+}
+
+.sensor-card-header h3 {
+  color: #e2e8f0;
+
+  font-size: 18px;
+
+  font-weight: 600;
+}
+
+/* BODY */
+
+.sensor-card-body {
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 8px;
+}
+
+.sensor-card-body h1 {
+  color: white;
+
+  font-size: 42px;
+
+  font-weight: bold;
+
+  line-height: 1;
+}
+
+.sensor-card-body span {
+  color: #cbd5e1;
+
+  font-size: 18px;
+
+  margin-bottom: 5px;
+}
+
+/* COLORES POR SENSOR */
+
+.sensor-card.temperature {
+  border-left:
+    6px solid #ef4444;
+}
+
+.sensor-card.humidity {
+  border-left:
+    6px solid #3b82f6;
+}
+
+.sensor-card.sound {
+  border-left:
+    6px solid #22c55e;
+}
+
+.sensor-card.light {
+  border-left:
+    6px solid #eab308;
+}
+
+/* GLOW */
+
+.sensor-card.temperature:hover {
+  box-shadow:
+    0 0 30px rgba(239,68,68,0.25);
+}
+
+.sensor-card.humidity:hover {
+  box-shadow:
+    0 0 30px rgba(59,130,246,0.25);
+}
+
+.sensor-card.sound:hover {
+  box-shadow:
+    0 0 30px rgba(34,197,94,0.25);
+}
+
+.sensor-card.light:hover {
+  box-shadow:
+    0 0 30px rgba(234,179,8,0.25);
+}
